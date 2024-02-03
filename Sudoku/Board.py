@@ -1,4 +1,6 @@
 from Sudoku.Cell import Cell
+import numpy as np
+import pandas as pd
 
 
 class Board:
@@ -141,3 +143,9 @@ class Board:
             html += row_string % tuple(values)
         html += "</table>"
         return html
+
+    def array(self) -> np.ndarray:
+        return np.array([c.value for c in self.cells]).reshape(9, 9)
+
+    def frame(self) -> pd.DataFrame:
+        return pd.DataFrame(self.array())
